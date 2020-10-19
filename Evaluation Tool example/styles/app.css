@@ -1,0 +1,73 @@
+
+* {
+    box-sizing: inherit;
+}
+
+body, p, ul, h1 {
+    padding: 0;
+    margin: 0;
+}
+
+.container{
+    max-width: 1080px;
+    margin: 0 auto;
+    background-color: white;
+    display: grid;
+    grid-template-rows: 2fr 5fr 2fr 5fr 2fr;
+    grid-template-columns: 1fr auto 1fr;
+    grid-template-areas: "nav nav nav"
+                        "page-title page-title page-title"
+                        "exercise-question exercise-question exercise-question"
+                        "answer answer answer"
+                        "rcb rcb rcb";
+}
+
+nav{
+    background-color: grey;
+    grid-area: nav;
+}
+
+.nav-links{
+    background-color: grey;
+    list-style-type: none;
+    display: flex;
+    gap: 10px;
+}
+
+.logout{
+    margin-left: auto;
+}
+
+.page-title{
+    grid-area: page-title;
+    background-color: whitesmoke;
+    padding: 15px;
+    border-bottom: 0.5px solid black;
+}
+
+.exercise-question{
+    grid-area: exercise-question;
+    background-color: whitesmoke;
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.answer{
+    grid-area: answer;
+    background-color: whitesmoke;
+    padding: 10px;
+}
+.answer > input {
+    min-width: 500px;
+    min-height: 100px;
+    resize: none;
+    white-space: nowrap;
+
+}
+
+.run-code-button{
+    grid-area: rcb;
+    background-color: whitesmoke;
+    padding: 10px;
+}

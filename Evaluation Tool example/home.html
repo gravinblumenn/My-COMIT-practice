@@ -3,26 +3,49 @@
 <html>
     <head>
         <title>TestDriven.io</title>
-
+        <link href = "styles/app.css" rel = "stylesheet" />
     </head>
 
-    <body>
+    <body class = "container">
         <nav>
-            <header><a href="home.html">TestDriven.io</a></header>
-            <ul>
-                <li><a href="About.html">About</a></li>
-                <li><a href="User's.html">User's</a></li>
-                <li><a href="User-Status.html">User Status</a></li>
-                <li><a href="Swagger.html">Swagger</a></li>
-                <li><a href="home.html">Log Out</a></li>
+            <ul class = "nav-links">
+                <li>
+                    <a href="home.html">TestDriven.io</a>
+                </li>
+                <li>
+                    <a href="About.html">About</a>
+                </li>
+                <li>
+                    <a href="User's.html">User's</a>
+                </li>
+                <li>
+                    <a href="User-Status.html">User Status</a>
+                </li>
+                <li>
+                    <a href="Swagger.html">Swagger</a>
+                </li>
+                <li class = "logout">
+                    <a href="home.html">
+                        <p>Log Out</p>
+                    </a>
+                </li>
             </ul>
         </nav>
-        <hr>
 
-        <h1>Exercises</h1>
-        <hr>
-        <p>Define a function called the sume that takes two integers as arguments and returns their sum.</p>
-        <img src="/">
-        <p><mark>Run Code</mark></p>
+        <header class = "page-title">
+            <h1>Exercises</h1>
+        </header>
+
+        <div class = "exercise-question">
+            <p>Define a function called the sum that takes two integers as arguments and returns their sum.</p>
+        </div>
+        
+        <div class = "answer">
+            <input type = "textarea" name = "Answer" placeholder = "Write your answer here" rows = "50" cols = "150">
+        </div>
+        
+        <div class = "run-code-button">
+            <button>Run Code</button>
+        </div>
     </body>
 </html>
