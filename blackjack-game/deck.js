@@ -1,7 +1,10 @@
+const shuffle = require('shuffle-array');
+const { displayCard } = require('./card.js');
+
 const ranks = ['2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A'];
 const suits = ['c', 'd', 'h', 's'];
 
-function createDeck() {
+function createCards() {
     const cards = [];
     for (rank of ranks) {
         for (suit of suits) {
@@ -12,9 +15,18 @@ function createDeck() {
     return cards;
 }
 
+function shuffleCards (cards) {
+    return shuffle(cards);
+}
+
+function createDeck() {
+    const cards = createCards();
+    return shuffleCards(cards);
+}
+
 function displayCards (cards) {
     for (card of cards) {
-        console.log(`${card.rank}${card.suit}`);
+        console.log(displayCard(card));
     }
 }
 

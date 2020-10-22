@@ -1,25 +1,42 @@
-const {getHandTotal, displayHand,} = require('./playerHand.js');
-const {createDeck, displayCards} = require('./deck.js');
-const {createPlayer } = require('./player.js');
-const {dealHand } = require('./dealer.js');
+const { createDeck } = require('./deck.js');
+const { createPlayer, playHand } = require('./player.js');
+const { dealHand, discardHand, playDealerHand, settleBets } = require('./dealer');
+const { displayPlayer, displayGameStart, displayGameEnd, displayRoundStart, displayHand,
+	getPlayRoundSelection } = require('./consoleUserInterface.js');
 
 function startGame() {
-    console.log('\n\n');
-    console.log('BLACKJACK GAME');
+	displayGameStart();
 
-    const player = createPlayer('Gavin', 50.00);
-    const deck = createDeck();
-    displayCards(deck);
+	const player = createPlayer('John', 100.00);
+	const dealer = createPlayer('Dealer');
+	const deck = createDeck();
 
-    console.log(`Created player ${player.name} with $${player.money}`);
-    console.log('Dealing hand...');
+	displayPlayer(player);
 
-    dealHand(deck, player.hand);
+	while (true) {
+		const selection = getPlayRoundSelection();
+		if (selection === 'n') {
+			break
+		}
+		playRound(deck, player, dealer);	
+	}
 
-    displayHand(player.hand)
-    let handTotal = getHandTotal(player.hand);
+	displayGameEnd();
+}
 
-    console.log(`Player hand total: ${handTotal}`);
+function playRound(deck, player, dealer) {
+	displayRoundStart();
+	
+	dealHand(deck, player.hand, dealer.hand);
+	displayHand(player);
+	displayHand(dealer);
+	
+	playHand(deck, player);
+	playDealerHand(deck, dealer);
+	settleBets(player, dealer);
+
+	discardHand(player);
+	discardHand(dealer);
 }
 
 startGame();
