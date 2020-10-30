@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDom from'react-dom'; 
 
-/* */
+import "./styles/app.css";
+
+/* this is not common practice where you copy and paste raw html*/
 function App() {
     return (
             <div class="container">
