@@ -8,13 +8,15 @@ import Footer from './Footer';
 import { getItems } from '../data';
 
 export default function App() {
+
+
     const items = getItems();
 
     return (
         <div className="container">
             <Header />
             <ItemCategories />
-            <ItemsList sportsItems={items} buttonText = {"Add to Cart!"} />
+            <ItemsList items={items} buttonText = {"Add to Cart!"} />
             <Footer />
         </div>
     );

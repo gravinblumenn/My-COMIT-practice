@@ -3,13 +3,12 @@ import React from 'react'
 
 
 export default function ItemsList(props) {
-    const sportsItems = props.sportsItems;
-    const buttonText = props.buttontext;
+    const {items, buttonText } = props;
     
     return (
         <section className="items">
             <ul className="items-list">
-                {sportsItems.map((item) => (
+                {items.map((item) => (
                     <li key = {item.name}>
                         <img src={item.image} alt="" />
                         <h3>{item.name}</h3>
