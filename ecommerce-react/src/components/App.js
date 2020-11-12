@@ -1,14 +1,19 @@
-import React, { useState} from 'react'
-import {orderBy} from 'lodash'
+import React, { useState, useEffect} from 'react';
+import {orderBy} from 'lodash';
+import axios from 'axios';
 
 import Header from './Header';
 import ItemCategories from './ItemCategories';
 import ItemsList from './ItemsList';
 import Footer from './Footer';
 
-import { getItems, getItemFields } from '../data';
+const SERVER_URL = "http://localhost:3000/items";
 
 export default function App() {
+    const [items, setItems] = useState([]);
+    const [itemFields, setItemFields] = useState([]);
+    const [itemCategories, setItemCategories] = useState([]);
+
     const [user, setUser] = useState({
         isLoggedIn: false,
         cart: [],
@@ -16,20 +21,43 @@ export default function App() {
     });
 
     const [selectedCategory, setSelectedCategory] = useState('all');
-    const [selectedSortField, setSelectedSortField] = useState('id')
+    const [selectedSortField, setSelectedSortField] = useState('id');
 
-    const items = getItems();
-    const itemFields = getItemFields();
+    useEffect(() => {
+        const getItems = async () => {
+            //axios methods are asyncronous methods and it must be specified as such inorder to use await
+            const response = await axios.get(`${SERVER_URL}/items`);// await lets you use asyncronous coding in a syncronious way, but letting the js runtime continue while it gathers the data
+            setItems(response.data);
+        };
+        const getItemFields = async () => {
+            const response = await axios.get(`${SERVER_URL}/itemFields`);
+            setItemFields(response.data);
+        };
+        const getItemCategories = async () => {
+            const response = await axios.get(`${SERVER_URL}/itemCategories`);
+            setItemCategories(response.data);
+        };
+        getItems();
+        getItemFields();
+        getItemCategories();
+    }, []);
 
-        /* looking at the value of isLoggedIn, based on the value, the function setIsLoggedIn, changes the variable IsLoggedIn */
-        const handleLogInClick = () => {
-            setUser({...user, isLoggedIn: !user.isLoggedIn}); //using spread operator because we cannot update the original DOM
+        const handleLogInClick = async () => {
+            const updatedUser = {...user, isLoggedIn: !user.isLoggedIn};
+            const response = await axios.put(`${SERVER_URL}/users/1`, updatedUser);
+            if (response.status < 400) {
+                setUser(updatedUser);
+            } else {
+                console.log(response);
+            }
+
         };
 
         const handleAddToCartClick = (item) => {
             console.log(item);
             const updatedCart = [...user.cart, item]
             setUser({...user, cart: updatedCart});
+            console.log(user.cart);
         };
 
         const handleSelectCategory = (category) => {
@@ -53,8 +81,8 @@ export default function App() {
     return (
         <div className="container">
             <Header isLoggedIn = {user.isLoggedIn} handleClick = {handleLogInClick} />
-            <ItemCategories handleSelectCategory = {handleSelectCategory}/>
-            <ItemsList items={getItemsToDisplay()} handleAddToCartClick = {handleAddToCartClick} />
+            <ItemCategories categories = {itemCategories} handleSelectCategory = {handleSelectCategory}/>
+            <ItemsList items = {getItemsToDisplay()} handleAddToCartClick = {handleAddToCartClick} />
             <Footer />
         </div>
     );
