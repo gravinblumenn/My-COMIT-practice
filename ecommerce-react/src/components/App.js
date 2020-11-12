@@ -1,13 +1,13 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect, useMemo} from 'react';
 import {orderBy} from 'lodash';
 import axios from 'axios';
 
+import Login from './Login';
 import Header from './Header';
-import ItemCategories from './ItemCategories';
-import ItemsList from './ItemsList';
+import Items from './Items';
 import Footer from './Footer';
 
-const SERVER_URL = "http://localhost:3000/items";
+const SERVER_URL = "http://localhost:3000";
 
 export default function App() {
     const [items, setItems] = useState([]);
@@ -22,6 +22,7 @@ export default function App() {
 
     const [selectedCategory, setSelectedCategory] = useState('all');
     const [selectedSortField, setSelectedSortField] = useState('id');
+    const [currentPage, setCurrentPage] = useState('items');
 
     useEffect(() => {
         const getItems = async () => {
@@ -42,21 +43,45 @@ export default function App() {
         getItemCategories();
     }, []);
 
-        const handleLogInClick = async () => {
+    const itemsToDisplay = useMemo(() => {
+        console.log('getting items to display');
+        const filteredItems =  items.filter(
+            (item) => 
+            selectedCategory === "all" || item.category === selectedCategory);
+            return orderBy (filteredItems, selectedSortField, "asc");
+    }, [items, selectedCategory, selectedSortField]);
+
+        const handleLoginPageClick = () => {
+            if (currentPage === 'items') {
+                setCurrentPage('login');
+            }else {
+                setCurrentPage('items');
+            }
+        }
+
+        const handleSubmitLogIn = async (event, data) => {
+            console.log(data.email);
+            console.log(data.password);
+            event.preventDefault();
             const updatedUser = {...user, isLoggedIn: !user.isLoggedIn};
+            const response = await axios.put(`${SERVER_URL}/users/1`, updatedUser);
+            if (response.status < 400) {
+                setUser(updatedUser);
+                setCurrentPage('items');
+            } else {
+                console.log(response);
+            }
+        };
+
+        const handleAddToCartClick = async (item) => {
+            const updatedCart = [...user.cart, item];
+            const updatedUser = {...user, cart: updatedCart};
             const response = await axios.put(`${SERVER_URL}/users/1`, updatedUser);
             if (response.status < 400) {
                 setUser(updatedUser);
             } else {
                 console.log(response);
             }
-
-        };
-
-        const handleAddToCartClick = (item) => {
-            console.log(item);
-            const updatedCart = [...user.cart, item]
-            setUser({...user, cart: updatedCart});
             console.log(user.cart);
         };
 
@@ -70,19 +95,18 @@ export default function App() {
             setSelectedSortField(field);
         };
 
-        const getItemsToDisplay = () => {
-            const filteredItems =  items.filter(
-                (item) => 
-                selectedCategory === "all" || item.category === selectedCategory);
-                return orderBy (filteredItems, selectedSortField, "asc");
-        };
-
-
     return (
         <div className="container">
-            <Header isLoggedIn = {user.isLoggedIn} handleClick = {handleLogInClick} />
-            <ItemCategories categories = {itemCategories} handleSelectCategory = {handleSelectCategory}/>
-            <ItemsList items = {getItemsToDisplay()} handleAddToCartClick = {handleAddToCartClick} />
+            <Header currentPage = {currentPage} isLoggedIn = {user.isLoggedIn} handleClick = {handleLoginPageClick} />
+            {currentPage === "items" ? (
+            <Items 
+                categories = {itemCategories} 
+                handleSelectCategory = {handleSelectCategory}
+                items = {itemsToDisplay} 
+                handleAddToCart = {handleAddToCartClick} />
+            ) : (
+                <Login handleSubmit = {handleSubmitLogIn}/>
+            )}
             <Footer />
         </div>
     );
