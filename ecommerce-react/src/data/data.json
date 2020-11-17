@@ -56,7 +56,7 @@
   ],
   "users": [
     {
-      "isLoggedIn": false,
+      "isLoggedIn": true,
       "cart": [],
       "id": 1
     },

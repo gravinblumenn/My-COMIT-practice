@@ -1,7 +1,8 @@
-import React from 'react'
+import React, {useContext} from 'react';
+import { ItemsContext } from './ItemsProvider';
 
 export default function ItemsList(props) {
-    const {items } = props;
+    const {items, handleAddToCartClick} = useContext(ItemsContext);
     
     // line 18 calls an arrow function(anonymous function) which is passed the props.handleAddToCartClick function
     return (
@@ -13,7 +14,7 @@ export default function ItemsList(props) {
                         <h3>{item.name}</h3>
                         <div>${item.price}</div>
                         <p>{item.description}</p>
-                        <button className = "item" onClick = { () => props.handleAddToCartClick(item)}>
+                        <button className = "item" onClick = { () => handleAddToCartClick(item)}>
                             Add to Cart!
                         </button>
                     </li>

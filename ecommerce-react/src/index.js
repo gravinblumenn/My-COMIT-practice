@@ -1,11 +1,16 @@
 import React from 'react';
 import ReactDom from'react-dom'; 
+import { BrowserRouter as Router} from 'react-router-dom';
 
 import "./styles/app.css";
 
 import App from './components/App';
+import ItemsProvider from "./components/ItemsProvider";
 
-/* this is not common practice where you copy and paste raw html*/
-
-
-ReactDom.render(<App />, document.getElementById("root"));
+ReactDom.render(
+<ItemsProvider>
+<Router>
+    <App />
+</Router>
+</ItemsProvider>,
+ document.getElementById("root"));
