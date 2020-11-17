@@ -18,8 +18,7 @@ export default function ItemsList(props) {
                             Add to Cart!
                         </button>
                     </li>
-                )
-                )}
+                ))}
             </ul>
         </section>
     );
