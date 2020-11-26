@@ -1,5 +1,6 @@
 * {
     box-sizing: inherit;
+    margin: 0px;
 }
 
 :root {
@@ -11,7 +12,7 @@
     --item-bkground: #044D00;
 }
 
-body{
+.body{
     margin: 0;
     padding: 0;
     background-color: var(--background-color);
@@ -30,6 +31,7 @@ body{
     grid-template-areas: "user header cart"
                         "categories items-list system-categories"
                         "footer footer footer";
+    background-color: var(--background-color);
 }
 
 ul {
@@ -38,10 +40,17 @@ ul {
 
 .user {
     grid-area: user;
+
+}
+.user > img {
+    border: 1px solid var(--light-green);
+    border-radius: 0.8rem;
+    margin: 3px;
 }
 
 header {
     grid-area: header;
+    padding: 3px;
 }
 
 .cart {
@@ -50,6 +59,12 @@ header {
 
 .categories {
     grid-area: categories;
+}
+.categories > ul > li {
+    padding: 3px;   
+    margin: 3px;
+    background-color: var(--light-green);
+    border-radius: 0.3rem;
 }
 
 .items-list {
@@ -67,12 +82,33 @@ header {
     width: 25%;
     vertical-align: bottom;
     display: grid;
+    border-radius: 0.3rem;
 }
 
 .system-categories {
     grid-area: system-categories
 }
+.system-categories > ul > li {
+    padding: 3px;
+    background-color: var(--light-green);
+    margin: 3px;
+    border-radius: 0.3rem;
+}
 
 .footer {
     grid-area: footer;
+    border-top: 1px solid var(--black);
 }
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    padding: 3px;
+    margin: 3px;
+    grid-area: items-list;
+    align-items: left;
+}
+.auth-form > label > input {
+    width: 300px;
+}
+

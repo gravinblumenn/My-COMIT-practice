@@ -1,5 +1,5 @@
 import React, {createContext, useContext, useState} from 'react';
-import {} from '../firebase/ItemRepository';
+import {} from '../firebase/notesRepository';
 
 const ItemsContext = createContext();
 export const useItems = () => useContext(ItemsContext);
