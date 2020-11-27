@@ -42,6 +42,10 @@ ul {
     grid-area: user;
 
 }
+a:-webkit-any-link {
+    text-decoration: none;
+    color: white;
+}
 .user > img {
     border: 1px solid var(--light-green);
     border-radius: 0.8rem;
@@ -51,6 +55,7 @@ ul {
 header {
     grid-area: header;
     padding: 3px;
+
 }
 
 .cart {
@@ -76,7 +81,7 @@ header {
 }
 .items-list > li {
     background-color: var(--item-bkground);
-    padding: 3em 1em;
+    padding: 4em 1em;
     border: 3px solid var(--black);
     margin: 0.5em;
     width: 25%;
@@ -108,7 +113,13 @@ header {
     grid-area: items-list;
     align-items: left;
 }
+.auth-form > label {
+    padding-bottom: 3px;
+}
 .auth-form > label > input {
     width: 300px;
+}
+.signUpSubmit {
+    width: 50px;
 }
 

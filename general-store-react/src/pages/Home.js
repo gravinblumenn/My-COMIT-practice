@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useState} from 'react';
+import {Link} from 'react-router-dom';
 
 export default function Home(props) {
     return (
@@ -9,15 +10,15 @@ export default function Home(props) {
                 <div className = 'user' >
                     <img src = "" alt = "profile" />
                     <p>Profile Name</p>
-                    <button>Sign in</button>
+                    <Link to = "/SignUp"><button>Sign in</button></Link>
                 </div>
                     
                 <header>
-                    <h1>General Store</h1>
+                    <Link to = "/"><h1>General Store</h1></Link>
                 </header>
 
                 <div className = 'cart'>
-                    <img src = "" alt = "cart" />
+                    <button><img src = "" alt = "cart" /></button>
                 </div>
 
                 <div className = 'categories'>
@@ -35,21 +36,21 @@ export default function Home(props) {
 
                 <div>
                     <ul className = 'items-list'>
-                        <li><img src = "" alt = "game" />Game title Game Price</li>
-                        <li><img src = "" alt = "game" />Game title Game Price</li>
-                        <li><img src = "" alt = "game" />Game title Game Price</li>
-                        <li><img src = "" alt = "game" />Game title Game Price</li>
-                        <li><img src = "" alt = "game" />Game title Game Price</li>
-                        <li><img src = "" alt = "game" />Game title Game Price</li>
-                        <li><img src = "" alt = "game" />Game title Game Price</li>
-                        <li><img src = "" alt = "game" />Game title Game Price</li>
-                        <li><img src = "" alt = "game" />Game title Game Price</li>
-                        <li><img src = "" alt = "game" />Game title Game Price</li>
-                        <li><img src = "" alt = "game" />Game title Game Price</li>
-                        <li><img src = "" alt = "game" />Game title Game Price</li>
-                        <li><img src = "" alt = "game" />Game title Game Price</li>
-                        <li><img src = "" alt = "game" />Game title Game Price</li>
-                        <li><img src = "" alt = "game" />Game title Game Price</li>
+                        <li>Game title Game Price<button>Add to Cart</button></li>
+                        <li>Game title Game Price<button>Add to Cart</button></li>
+                        <li>Game title Game Price<button>Add to Cart</button></li>
+                        <li>Game title Game Price<button>Add to Cart</button></li>
+                        <li>Game title Game Price<button>Add to Cart</button></li>
+                        <li>Game title Game Price<button>Add to Cart</button></li>
+                        <li>Game title Game Price<button>Add to Cart</button></li>
+                        <li>Game title Game Price<button>Add to Cart</button></li>
+                        <li>Game title Game Price<button>Add to Cart</button></li>
+                        <li>Game title Game Price<button>Add to Cart</button></li>
+                        <li>Game title Game Price<button>Add to Cart</button></li>
+                        <li>Game title Game Price<button>Add to Cart</button></li>
+                        <li>Game title Game Price<button>Add to Cart</button></li>
+                        <li>Game title Game Price<button>Add to Cart</button></li>
+                        <li>Game title Game Price<button>Add to Cart</button></li>
                     </ul>
                 </div>
 

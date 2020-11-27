@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 export default function SignUp(props) {
     return (
@@ -7,15 +8,14 @@ export default function SignUp(props) {
                     <div className = 'user' >
                             <img src = "" alt = "profile" />
                             <p>Profile Name</p>
-                            <button>Sign in</button>
                         </div>
                             
                         <header>
-                            <h1>General Store</h1>
+                            <Link to = "/"><h1>General Store</h1></Link>
                         </header>
 
                         <div className = 'cart'>
-                            <img src = "" alt = "cart" />
+                            <button><img src = "" alt = "cart" /></button>
                     </div>
 
                     <div className = "auth-form">
@@ -29,7 +29,7 @@ export default function SignUp(props) {
                             <input type = 'nationality' name = 'nationality' />
                         </label>
                         <label><p>Email:</p>
-                            <input type = 'email' name = 'email' autofocus required />
+                            <input type = 'email' name = 'email'  required />
                         </label>
                         <label><p>Password:</p>
                             <input type = 'password' name = 'password' required />
@@ -37,7 +37,7 @@ export default function SignUp(props) {
                         <label><p>Confirm Password:</p>
                             <input type = 'password' name = 'password' required />
                         </label>
-
+                        <button className = "signUpSubmit" type = "submit">Submit</button>
                     </div>
 
                     <div className = 'footer'>
