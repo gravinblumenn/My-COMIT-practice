@@ -106,17 +106,20 @@ header {
 }
 
 .auth-form {
+    grid-area: items-list;
+}
+.auth-form > form {
     display: flex;
     flex-direction: column;
     padding: 3px;
     margin: 3px;
-    grid-area: items-list;
+
     align-items: left;
 }
-.auth-form > label {
+.auth-form > form > label {
     padding-bottom: 3px;
 }
-.auth-form > label > input {
+.auth-form > form > label > input {
     width: 300px;
 }
 .signUpSubmit {

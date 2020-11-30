@@ -1,12 +1,14 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
 import Pages from './pages';
+import UserProvider from './components/UserProvider';
 
 export default function App() {
     return (
         <div>
-            <Pages />
+            <UserProvider>
+                <Pages />
+            </UserProvider>
         </div>
-    )
+    );
 }

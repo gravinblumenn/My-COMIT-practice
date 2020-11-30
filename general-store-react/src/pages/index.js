@@ -4,13 +4,14 @@ import Home from "./Home";
 import Layout from "../components/Layout";
 import SignUp from "./SignUp";
 
+
 export default function Pages() {
     return (
         <Router>
-            <Layout>
-                <Route exact path = "/" component = {Home}/>
-                <Route path = "/SignUp" component = {SignUp}/>
-            </Layout>
+                <Layout>
+                    <Route exact path = "/" component = {Home}/>
+                    <Route path = "/SignUp" component = {SignUp}/>
+                </Layout>
         </Router>
     )
 }
