@@ -17,6 +17,7 @@ const UserContext = createContext();
 export const useUser = () => useContext(UserContext);
 
 export default function UserProvider(props) {
+
     const [user, setUser] = useState(null);
     const [currentError, setCurrentError] = useState(null);
 
@@ -27,12 +28,11 @@ export default function UserProvider(props) {
         setCurrentError(null);
     };
 
-    const handleSubmitSignUp = async (event, values) => {
+    const handleSubmitSignUp = async (event, email, password ) => {
         event.preventDefault();
         try {
-            const authUser = await createUserWithEmailAndPassword(values.email, values.password);
-            delete values.password;
-            const userData = addUser({...values, uid: authUser.user.uid });
+            const authUser = await createUserWithEmailAndPassword(email, password);
+            const userData = addUser({email, uid: authUser.user.uid });
             updateState(userData);
         } catch (error) {
             setCurrentError(error);
@@ -40,7 +40,7 @@ export default function UserProvider(props) {
     };
 
     return (
-        <UserContext.Provier
+        <UserContext.Provider
             value = {{
                 user,
                 error: currentError,
@@ -48,6 +48,6 @@ export default function UserProvider(props) {
 
         }}>
             {props.children}
-        </UserContext.Provier>
+        </UserContext.Provider>
     );
 }

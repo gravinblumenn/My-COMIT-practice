@@ -11,16 +11,12 @@ export default function SignUp(props) {
 
     const [values, setValues] = useState({});
 
+    const [name, setName] = useState("");
+    const [age, setAge] = useState("");
     const [email, setEmail] = useState("");
     const [password1, setPassword1] = useState("");
     const [password2, setPassword2] = useState("");
 
-    const handleChange = (event) => {
-        setValues({
-            ...values,
-            [event.target.name]: event.target.value,
-        });
-    };
 
     return (
             <div className = "body">
@@ -37,25 +33,27 @@ export default function SignUp(props) {
 
 
                     <div className = "auth-form">
-                        <form onChange = {(event) => handleSubmitSignUp(event,values)}>
+                        <form action = "">
                         <label><p>Name:</p>
                             <input 
+                            value = {name}
                             type = 'text' 
                             id = 'name'
                             name = 'name'
                             placeholder = 'Name'
                             autoFocus
-                            onChange = {handleChange}
+                            onChange = {(event) => setName(event.target.value)}
                              />
                         </label>
                         <label><p>Age:</p>
                             <input 
+                            value = {age}
                             type = 'number' 
                             id = 'age'
                             name = 'age'
                             placeholder = 'Age'
                             autoFocus
-                            onChange = {handleChange}
+                            onChange = {(event) => setAge(event.target.value)}
                              />
                         </label>
                         <label><p>Email:</p>
@@ -73,7 +71,7 @@ export default function SignUp(props) {
                             <input 
                             value = {password1}
                             type = 'password' 
-                            id = "password"
+                            id = "password1"
                             name = 'password' 
                             placeholder = "Password"
                             autoFocus required
@@ -83,7 +81,7 @@ export default function SignUp(props) {
                             <input 
                             value = {password2}
                             type = 'password' 
-                            id = "password"
+                            id = "password2"
                             name = 'password' 
                             placeholder = 'Confirm Password'
                             autoFocus required
@@ -93,6 +91,7 @@ export default function SignUp(props) {
                         className = "signUpSubmit" 
                         type = "submit"
                         disabled={!password1 || !password2 || password1 !== password2}
+                        onClick = {(event) => handleSubmitSignUp(event, email, password1)}
                         >
                         Submit
                         </button>

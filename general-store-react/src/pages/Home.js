@@ -1,7 +1,11 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 
 export default function Home(props) {
+    useEffect(() => {
+        document.title = "The General Store";
+    }, []);
+    
     return (
         <div>
             <title>The General Store</title>
@@ -10,7 +14,7 @@ export default function Home(props) {
                 <div className = 'user' >
                     <img src = "" alt = "profile" />
                     <p>Profile Name</p>
-                    <Link to = "/SignUp"><button>Sign in</button></Link>
+                    <Link to = "/SignUp"><button>Sign Up</button></Link>
                 </div>
                     
                 <header>
