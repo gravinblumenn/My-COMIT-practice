@@ -15,6 +15,7 @@ export default function Home(props) {
                     <img src = "" alt = "profile" />
                     <p>Profile Name</p>
                     <Link to = "/SignUp"><button>Sign Up</button></Link>
+                    <Link to = "/Login"><button>Log In</button></Link>
                 </div>
                     
                 <header>
