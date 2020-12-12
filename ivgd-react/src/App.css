@@ -18,7 +18,7 @@
   }
   
   .categories {
-    /* background-image: url(''); */
+    /* background: url('../imgs/IVGDbackground.jpg') center center/ cover no-repeat; */
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -27,7 +27,7 @@
   }
   
   .games {
-    /* background-image: url(''); */
+    /* background: url('../imgs/IVGDbackground.jpg') center center/ cover no-repeat; */
     background-position: center;
     background-size: fill;
     background-repeat: no-repeat;
@@ -36,7 +36,7 @@
   }
   
   .sign-up {
-    /* background-image: url(''); */
+    /* background: url('../imgs/IVGDbackground.jpg') center center/ cover no-repeat; */
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
