@@ -12,7 +12,7 @@ function CardItem(props) {
           <div className="cards-item-info">
             <h5 className="cards-item-text">{props.text}</h5>
             {/* <div className="cards-item-price">{props.price}</div> */}
-            <div className="cards-item-star-rate">{props.rating}</div>
+            <div className="cards-item-rate">{props.rating}</div>
           </div>
         </Link>
       </li>

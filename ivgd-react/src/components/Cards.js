@@ -3,7 +3,9 @@ import CardItem from "./CardItem";
 import "./Cards.css";
 import {useCards} from '../contexts/CardsContext';
 
+
 function Cards() {
+
   return (
     <div className="cards">
       <div className="cards-container">
