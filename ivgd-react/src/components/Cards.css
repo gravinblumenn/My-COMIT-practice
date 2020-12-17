@@ -1,6 +1,8 @@
 .cards {
     padding: 4rem;
     background: #fff;
+    background-color: transparent;
+    background: url('../imgs/IVGDbackground.webp') center center/ cover no-repeat;
   }
   
   h1 {
@@ -10,6 +12,7 @@
   .cards-container {
     display: flex;
     flex-flow: column;
+    flex-wrap:wrap;
     align-items: center;
     max-width: 1120px;
     width: 90%;
@@ -42,6 +45,7 @@
     border-radius: 10px;
     overflow: hidden;
     text-decoration: none;
+    background-color: white;
   }
   
   .cards-item-pic-wrap {
