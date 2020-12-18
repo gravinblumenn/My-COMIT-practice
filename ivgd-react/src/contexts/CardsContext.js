@@ -11,11 +11,13 @@ req.headers({
 	"useQueryString": true
 });
 
+
 req.end(function (res) {
-	if (res.error) throw new Error(res.error);
+    if (res.error) throw new Error(res.error);
 
 	console.log(res.body);
 });
+
 
 const CardContext = createContext();
 
@@ -23,18 +25,16 @@ export function useCards() {
     return useContext(CardContext);
 }
 
+
 export function CardsProvider({children}) {
+    const [data, setData] = useState([]);
 
-    function getGameName() {
-
-    }
-
-    const value = {
-        getGameName,
-    }
+    useEffect(() => {
+    }, [])
+    
 
     return (
-        <CardContext.Provider value = {value}>
+        <CardContext.Provider>
             {children}
         </CardContext.Provider>
     );
