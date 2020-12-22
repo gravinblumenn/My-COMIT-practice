@@ -44,16 +44,6 @@ function NavBar() {
                 Home
               </Link>
             </li>
-
-            <li className="nav-item">
-              <Link
-                to="/Categories"
-                className="nav-links"
-                onClick={closeMobileMenu}
-              >
-                Categories
-              </Link>
-            </li>
             <li className="nav-item">
               <Link
                 to="/Profile"

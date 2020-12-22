@@ -1,0 +1,94 @@
+.card{
+    align-items: center;
+}
+.gamePage-title-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+.gamePage-title {
+    margin: 10px;
+}
+.gamePage-esrb_rating {
+    padding: 5px;
+    margin: 10px;
+    background-color: red;
+    border-radius: 10px;
+}
+.gamePage-info{
+    width: 1000px;
+}
+h2 {
+    justify-content: center;
+}
+
+.gamePage-pic {
+    max-width: 1000px;
+    border-radius: 10px;
+}
+.game-screenshot {
+    max-width: 40%;
+    min-height: 187.5px;
+    margin: 10px;
+    border-radius: 10px;
+    border: solid black;
+}
+.gamePage-screenshots{
+    width: 1000px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    list-style: none;
+    justify-content: space-evenly;
+
+}
+.gamePage-genres, .gamePage-stores, .gamePage-platforms {
+    list-style: none;
+}
+.gamePage-genres-container, .gamePage-stores-container, .gamePage-platform-container, .gamePage-publishers-container {
+    display: flex;
+    flex-direction: row;
+    border-radius: 10px;
+    border: solid black;
+    margin: 10px;
+    padding: 5px;
+}
+.gamePage-genres, .gamePage-platforms, .gamePage-stores, .gamePage-publishers {
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+
+}
+.gamePage-genre, .gamePage-platform, .gamePage-store, .gamePage-publisher {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.gamePage-genres > p{
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.gamePage-tags {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+.gamePage-tag {
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: blue;
+    color: white;
+    padding: 5px;
+    border-radius: 10px;
+}
+.gamePage-rating{
+    padding: 10px;
+    margin: 10px;
+}
+.gamePage-description {
+    margin: 10px;
+    border-radius: 10px;
+    border: solid black;
+    padding: 5px;
+}
